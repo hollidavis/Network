@@ -10,8 +10,14 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-12">
+        <div class="col-md-9">
+          <!-- Current page goes here -->
           <router-view />
+        </div>
+        <div class="col-md-3">
+          <Ad />
+          ads
+          <!-- ads will go here -->
         </div>
       </div>
     </div>
@@ -19,8 +25,9 @@
 </template>
 
 <script>
-import { computed } from 'vue'
+import { computed, onMounted } from 'vue'
 import { AppState } from './AppState'
+import { adsService } from './services/AdsService'
 export default {
   name: 'App',
   setup() {
