@@ -1,15 +1,21 @@
 <template>
-  <header>
-    <Navbar />
-  </header>
-  <main>
-    <router-view />
-  </main>
-  <footer>
-    <div class="bg-dark text-light text-center p-4">
-      Made with 💖 by CodeWorks
+  <main class="row">
+    <div class="col-md-3">
+      <!-- <Login /> -->
     </div>
-  </footer>
+    <div class="col-md-9">
+      <div class="row">
+        <div class="col-12 p-0">
+          <Navbar />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <router-view />
+        </div>
+      </div>
+    </div>
+  </main>
 </template>
 
 <script>

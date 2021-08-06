@@ -1,5 +1,6 @@
 <template>
   <div class="search">
+    This is the Search Page
   </div>
 </template>
 
