@@ -4,7 +4,7 @@ import { api } from './AxiosService'
 class AdsService {
   async getAllAds() {
     try {
-      const res = await api.get('/ads')
+      const res = await api.get('api/ads')
       AppState.ads = res.data
     } catch (err) {
       logger.error('HAVE YOU STARTED YOUR SERVER YET???', err)

@@ -14,9 +14,8 @@
           <!-- Current page goes here -->
           <router-view />
         </div>
-        <div class="col-md-3">
+        <div class="col-md-3 d-flex flex-column justify-content-center">
           <Ad />
-          ads
           <!-- ads will go here -->
         </div>
       </div>
