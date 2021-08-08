@@ -69,7 +69,7 @@ export default {
         try {
           if (await Pop.confirm()) {
             await postsService.destroyPost(props.post.id)
-            Pop.toast('Deleted', 'success')
+            Pop.toast('Deleted!', 'success')
           }
         } catch (error) {
           Pop.toast(error, 'error')
