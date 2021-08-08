@@ -14,7 +14,7 @@ class PostsService {
 
   async destroyPost(id) {
     await api.delete('api/posts/' + id)
-    await this.getAllPosts()
+    AppState.posts = AppState.post.filter(p => p.id !== id)
   }
 }
 
