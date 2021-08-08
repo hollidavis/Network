@@ -1,7 +1,7 @@
 <template>
   <div class="home row pl-15">
     <div class="col-12 bg-light rounded shadow">
-      <CreatePost />
+      <CreatePost :posts="posts" />
     </div>
     <div class="col-12">
       <Thread :posts="posts" />
