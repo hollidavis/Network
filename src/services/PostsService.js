@@ -8,8 +8,9 @@ class PostsService {
     AppState.posts = res.data
   }
 
-  async createPost() {
-
+  async createPost(newPost) {
+    await api.post('api/posts', newPost)
+    await this.getAllPosts()
   }
 }
 

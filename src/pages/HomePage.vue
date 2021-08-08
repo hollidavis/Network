@@ -12,7 +12,6 @@
 <script>
 import { computed, onMounted } from '@vue/runtime-core'
 import { postsService } from '../services/PostsService'
-import { logger } from '../utils/Logger'
 import { AppState } from '../AppState'
 import Pop from '../utils/Notifier'
 export default {
