@@ -8,9 +8,8 @@ class PostsService {
     AppState.posts = res.data
   }
 
-  async getNextPosts(query = {}) {
-    const res = await api.get('api/posts?page=' + AppState.page)
-    AppState.posts = res.data
+  async createPost() {
+
   }
 }
 

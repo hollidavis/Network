@@ -11,6 +11,7 @@ import { computed, onMounted } from '@vue/runtime-core'
 import { logger } from '../utils/Logger'
 import { adsService } from '../services/AdsService'
 import { AppState } from '../AppState'
+import Pop from '../utils/Notifier'
 export default {
   name: 'Ad',
   setup() {
@@ -18,7 +19,7 @@ export default {
       try {
         await adsService.getAllAds()
       } catch (error) {
-        logger.error(error)
+        Pop.toast(error, 'error')
       }
     })
     return {

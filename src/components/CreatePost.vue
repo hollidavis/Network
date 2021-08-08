@@ -39,6 +39,8 @@
 import { reactive } from '@vue/reactivity'
 import { computed } from '@vue/runtime-core'
 import { AppState } from '../AppState'
+import { postsService } from '../services/PostsService'
+import Pop from '../utils/Notifier'
 export default {
   name: 'CreatePost',
   props: {
@@ -53,7 +55,15 @@ export default {
     })
     return {
       state,
-      account: computed(() => AppState.account)
+      account: computed(() => AppState.account),
+      async createPost() {
+        try {
+          await postsService.createPost(state.newPost)
+          state.newPost = {}
+        } catch (error) {
+          Pop.toast(error, 'error')
+        }
+      }
     }
   }
 }

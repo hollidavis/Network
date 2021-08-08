@@ -1,5 +1,6 @@
 import { AppState } from '../AppState'
 import { logger } from '../utils/Logger'
+import Pop from '../utils/Notifier'
 import { api } from './AxiosService'
 
 class AccountService {
@@ -17,7 +18,7 @@ class AccountService {
       await api.put('/account')
       await this.getAccount()
     } catch (error) {
-      logger.error(error)
+      Pop.toast(error, 'error')
     }
   }
 }
