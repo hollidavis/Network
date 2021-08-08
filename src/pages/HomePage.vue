@@ -1,5 +1,5 @@
 <template>
-  <div class="home row pl-15">
+  <div class="home row">
     <div class="col-12 bg-light rounded shadow">
       <CreatePost :posts="posts" v-if="user.isAuthenticated" />
     </div>

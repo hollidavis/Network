@@ -1,5 +1,5 @@
 <template>
-  <div class="ad" v-for="a in ads" :key="a.title">
+  <div class="ad hidden-mobile" v-for="a in ads" :key="a.title">
     <a class="card mb-3" :href="'https://' + a.linkURL">
       <img class="shadow" :src="a.tall" :alt="a.title">
     </a>

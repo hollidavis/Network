@@ -60,7 +60,7 @@ export default {
 <style lang="scss" scoped>
 .post-img{
   width: 100%;
-  max-height: 600px;
+  max-height: 60vh;
   object-fit: cover;
   object-position: center;
 }
