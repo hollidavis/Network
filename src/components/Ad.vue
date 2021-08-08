@@ -8,7 +8,6 @@
 
 <script>
 import { computed, onMounted } from '@vue/runtime-core'
-import { logger } from '../utils/Logger'
 import { adsService } from '../services/AdsService'
 import { AppState } from '../AppState'
 import Pop from '../utils/Notifier'

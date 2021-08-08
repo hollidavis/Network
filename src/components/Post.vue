@@ -1,7 +1,14 @@
 <template>
-  <div class="post col-12 bg-light rounded shadow my-3">
+  <div class="post col-12 bg-light rounded shadow my-3 pt-3">
+    <div class="row justify-content-end">
+      <div class="col-1" await v-if="post.creator.id == account.id">
+        <button type="button" class="btn btn-sm btn-outline-danger" @click="deletePost">
+          <span class="fa fa-times"></span>
+        </button>
+      </div>
+    </div>
     <!-- Creator Info -->
-    <div class="row mt-3">
+    <div class="row">
       <!-- Profile Picture -->
       <div class="ml-3">
         <img class="round-border sm-profile" :src="post.creator.picture" :alt="post.creator.name">
@@ -43,6 +50,10 @@
 </template>
 
 <script>
+import { computed } from '@vue/runtime-core'
+import { AppState } from '../AppState'
+import { postsService } from '../services/PostsService'
+import Pop from '../utils/Notifier'
 export default {
   name: 'Post',
   props: {
@@ -51,8 +62,20 @@ export default {
       required: true
     }
   },
-  setup() {
-    return {}
+  setup(props) {
+    return {
+      account: computed(() => AppState.account),
+      async deletePost() {
+        try {
+          if (await Pop.confirm()) {
+            await postsService.destroyPost(props.post.id)
+            Pop.toast('Deleted', 'success')
+          }
+        } catch (error) {
+          Pop.toast(error, 'error')
+        }
+      }
+    }
   }
 }
 </script>
