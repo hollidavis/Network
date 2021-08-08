@@ -1,7 +1,7 @@
 <template>
   <div class="ad" v-for="a in ads" :key="a.title">
     <a class="card my-3" :href="'https://' + a.linkURL">
-      <img :src="a.tall" :alt="a.title">
+      <img class="shadow" :src="a.tall" :alt="a.title">
     </a>
   </div>
 </template>

@@ -1,12 +1,14 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-light bg-primary">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
-      <div class="d-flex flex-column align-items-center">
+      <div class="d-flex align-items-center">
         <img
           alt="logo"
-          src="../assets/img/cw-logo.png"
+          src="../assets/img/n-logo.png"
           height="45"
-        />
+        /><p class="m-0 text-secondary">
+          ETWORK
+        </p>
       </div>
     </router-link>
     <button
@@ -22,11 +24,6 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <router-link :to="{ name: 'Home' }" class="nav-link">
-            Home
-          </router-link>
-        </li>
         <li class="nav-item">
           <router-link :to="{ name: 'Search' }" class="nav-link">
             Search
