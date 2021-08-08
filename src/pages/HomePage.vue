@@ -1,7 +1,7 @@
 <template>
   <div class="home row pl-15">
     <div class="col-12 bg-light rounded shadow">
-      <CreatePost :posts="posts" />
+      <CreatePost :posts="posts" v-if="user.isAuthenticated" />
     </div>
     <div class="col-12">
       <Thread :posts="posts" />
@@ -25,6 +25,7 @@ export default {
       }
     })
     return {
+      user: computed(() => AppState.user),
       posts: computed(() => AppState.posts)
     }
   }

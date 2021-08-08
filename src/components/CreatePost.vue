@@ -1,11 +1,33 @@
 <template>
   <div class="create-post row">
-    <div class="col-12">
-      <form @submit.prevent="createPost">
+    <div class="col-12 d-flex justify-content-between my-3">
+      <!-- Profile Information -->
+      <div class="mr-3">
+        <img class="round-border sm-profile" :src="account.picture" :alt="account.name">
+      </div>
+      <!-- New Post Form -->
+      <form @submit.prevent="createPost" class="w-100">
         <div class="form-group">
-          <input type="text" name="body" class="form-control" placeholder="Share what's on your mind..." v-model="state.newPost.body">
-          <button type="submit" class="btn btn-primary">
-            <span class="fa fa-paper-plane"></span> Post
+          <textarea
+            name="body"
+            rows="4"
+            cols="50"
+            class="form-control"
+            placeholder="Share what's on your mind..."
+            required
+            v-model="state.newPost.body"
+          ></textarea>
+        </div>
+        <div class="form-group d-flex align-items-center">
+          <input
+            type="text"
+            name="imgUrl"
+            class="form-control"
+            placeholder="Image URL..."
+            v-model="state.newPost.imgUrl"
+          />
+          <button type="submit" class="btn btn-primary d-flex align-items-center ml-3">
+            <span class="fa fa-paper-plane mr-2"></span> Post
           </button>
         </div>
       </form>
@@ -15,6 +37,8 @@
 
 <script>
 import { reactive } from '@vue/reactivity'
+import { computed } from '@vue/runtime-core'
+import { AppState } from '../AppState'
 export default {
   name: 'CreatePost',
   props: {
@@ -28,12 +52,12 @@ export default {
       newPost: {}
     })
     return {
-      state
+      state,
+      account: computed(() => AppState.account)
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-
 </style>

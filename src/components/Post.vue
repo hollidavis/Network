@@ -1,9 +1,12 @@
 <template>
   <div class="post col-12 bg-light rounded shadow my-3">
+    <!-- Creator Info -->
     <div class="row mt-3">
+      <!-- Profile Picture -->
       <div class="ml-3">
         <img class="round-border sm-profile" :src="post.creator.picture" :alt="post.creator.name">
       </div>
+      <!-- Name, Created At, Graduated -->
       <div class="col-9 d-flex justify-content-center flex-column">
         <p class="m-0">
           <b>{{ post.creator.name }}</b>
@@ -17,11 +20,16 @@
         </div>
       </div>
     </div>
+    <!-- Body/Img -->
     <div class="row m-2">
       <div class="col-12">
         <p>{{ post.body }}</p>
+        <div v-if="post.imgUrl">
+          <img :src="post.imgUrl" class="post-img">
+        </div>
       </div>
     </div>
+    <!-- Likes -->
     <div class="row justify-content-end mb-3">
       <div class="col-1 d-flex flex-row justify-content-around align-items-center">
         <i class="fa fa-heart"></i>
@@ -50,4 +58,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.post-img{
+  width: 100%;
+  max-height: 600px;
+  object-fit: cover;
+  object-position: center;
+}
 </style>

@@ -1,7 +1,7 @@
 <template>
   <main class="row">
     <div class="col-md-3 shadow bg-light">
-      <Login />
+      <Login v-if="user.isAuthenticated" />
     </div>
     <div class="col-md-9">
       <div class="row">
@@ -30,6 +30,7 @@ export default {
   name: 'App',
   setup() {
     return {
+      user: computed(() => AppState.user),
       appState: computed(() => AppState)
     }
   }
