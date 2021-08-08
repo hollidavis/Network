@@ -32,7 +32,7 @@
       </ul>
       <span class="navbar-text">
         <button
-          class="btn btn-outline-primary text-uppercase"
+          class="btn btn-outline-dark text-uppercase"
           @click="login"
           v-if="!user.isAuthenticated"
         >
@@ -48,9 +48,9 @@
               :src="user.picture"
               alt="user photo"
               height="40"
-              class="rounded"
+              class="round"
             />
-            <span class="mx-3">{{ user.name }}</span>
+            <span class="mx-3 text-dark">{{ user.name }}</span>
           </div>
           <div
             class="dropdown-menu p-0 list-group w-100"
@@ -119,5 +119,8 @@ a:hover {
 }
 .nav-item .nav-link.router-link-exact-active{
   color: var(--primary);
+}
+.round{
+  border-radius: 50%;
 }
 </style>
