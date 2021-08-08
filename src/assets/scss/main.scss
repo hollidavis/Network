@@ -22,3 +22,20 @@ main {
   display: flex;
   align-items: stretch;
 }
+
+.side-bar-scroll{
+  overflow-y: auto;
+  height: 90vh;
+}
+
+.round-border{
+  border-radius: 50%;
+  border: 1px solid black;
+}
+
+.sm-profile{
+width: 75px;
+height: 75px;
+object-fit: cover;
+object-position: center;
+}

@@ -1,5 +1,5 @@
 <template>
-  <div class="profileSearchResults">
+  <div class="profile-search-results">
   </div>
 </template>
 

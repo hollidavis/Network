@@ -1,6 +1,6 @@
 <template>
   <main class="row">
-    <div class="col-md-3 shadow">
+    <div class="col-md-3 shadow bg-light">
       <Login />
     </div>
     <div class="col-md-9">
@@ -9,12 +9,12 @@
           <Navbar />
         </div>
       </div>
-      <div class="row">
+      <div class="row side-bar-scroll mt-3">
         <div class="col-md-9">
           <!-- Current page goes here -->
           <router-view />
         </div>
-        <div class="col-md-3 d-flex flex-column justify-content-center">
+        <div class="col-md-3 d-flex flex-column">
           <Ad />
           <!-- ads will go here -->
         </div>
@@ -24,9 +24,8 @@
 </template>
 
 <script>
-import { computed, onMounted } from 'vue'
+import { computed } from 'vue'
 import { AppState } from './AppState'
-import { adsService } from './services/AdsService'
 export default {
   name: 'App',
   setup() {

@@ -1,5 +1,10 @@
 <template>
-  <div class="createPost">
+  <div class="create-post row">
+    <div class="col-12">
+      <div>
+        Test
+      </div>
+    </div>
   </div>
 </template>
 

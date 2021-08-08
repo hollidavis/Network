@@ -54,10 +54,6 @@ export default {
 .profile-img{
   width: 70%
 }
-.round-border{
-  border-radius: 50%;
-  border: 1px solid black;
-}
 .spill{
 margin-right: 3em;
 margin-top: -5em

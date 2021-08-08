@@ -26,7 +26,7 @@
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
           <router-link :to="{ name: 'Search' }" class="nav-link">
-            Search
+            <span class="fa fa-search"></span> Search
           </router-link>
         </li>
       </ul>
