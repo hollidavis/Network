@@ -1,10 +1,10 @@
 <template>
   <div class="post col-12 bg-light rounded shadow my-3">
-    <div class="row">
-      <div class="col-1 mt-3">
+    <div class="row mt-3">
+      <div class="ml-3">
         <img class="round-border sm-profile" :src="post.creator.picture" :alt="post.creator.name">
       </div>
-      <div class="col-11 pl-4 d-flex justify-content-center flex-column">
+      <div class="col-9 d-flex justify-content-center flex-column">
         <p class="m-0">
           <b>{{ post.creator.name }}</b>
         </p>
