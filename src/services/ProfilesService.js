@@ -1,5 +1,4 @@
 import { AppState } from '../AppState'
-import { logger } from '../utils/Logger'
 import { convertToQuery } from '../utils/Query'
 import { api } from './AxiosService'
 class ProfilesService {
@@ -10,7 +9,6 @@ class ProfilesService {
 
   async getProfileById(id) {
     const res = await api.get('api/profiles/' + id)
-    logger.log(res.data)
     AppState.activeProfile = res.data
   }
 }

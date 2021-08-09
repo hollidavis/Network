@@ -1,17 +1,15 @@
 <template>
   <div class="login">
     <!-- Profile Image & graduated status -->
-    <router-link :to="{ name: 'Account' }" @click.stop="getProfileById">
-      <div class="row my-5">
-        <div class="w-100 d-flex justify-content-center align-items-center">
-          <img class="profile-img round-border" :src="account.picture" :alt="account.name">
-        </div>
-        <div class="w-100 d-flex align-items-end justify-content-end spill">
-          <span class="p-3 bg-light round-border fa fa-user-graduate fa-2x" aria-hidden="true" v-if="account.graduated == true"></span>
-          <span class="p-3 bg-light round-border fa fa-user fa-2x" aria-hidden="true" v-else></span>
-        </div>
+    <div class="row my-5 cursor" @click.stop="getProfileById">
+      <div class="w-100 d-flex justify-content-center align-items-center">
+        <img class="profile-img round-border" :src="account.picture" :alt="account.name">
       </div>
-    </router-link>
+      <div class="w-100 d-flex align-items-end justify-content-end spill">
+        <span class="p-3 bg-light round-border fa fa-user-graduate fa-2x" aria-hidden="true" v-if="account.graduated == true"></span>
+        <span class="p-3 bg-light round-border fa fa-user fa-2x" aria-hidden="true" v-else></span>
+      </div>
+    </div>
     <!-- Profile Info -->
     <div class="row">
       <!-- Name & Class -->
@@ -42,6 +40,7 @@ import { computed } from '@vue/runtime-core'
 import { AppState } from '../AppState'
 import { profilesService } from '../services/ProfilesService'
 import Pop from '../utils/Notifier'
+import { router } from '../router'
 export default {
   name: 'Login',
   setup() {
@@ -50,6 +49,7 @@ export default {
       async getProfileById() {
         try {
           await profilesService.getProfileById(AppState.account.id)
+          router.push({ path: `/profile/${AppState.account.id}` })
         } catch (error) {
           Pop.toast(error, 'error')
         }

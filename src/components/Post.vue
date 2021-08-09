@@ -10,7 +10,7 @@
     <!-- Creator Info -->
     <div class="row">
       <!-- Profile Picture -->
-      <div class="ml-3">
+      <div class="ml-3" @click.stop="getProfileById">
         <img class="round-border sm-profile" :src="post.creator.picture" :alt="post.creator.name">
       </div>
       <!-- Name, Created At, Graduated -->
@@ -54,6 +54,8 @@ import { computed } from '@vue/runtime-core'
 import { AppState } from '../AppState'
 import { postsService } from '../services/PostsService'
 import Pop from '../utils/Notifier'
+import { profilesService } from '../services/ProfilesService'
+import { router } from '../router'
 export default {
   name: 'Post',
   props: {
@@ -71,6 +73,14 @@ export default {
             await postsService.destroyPost(props.post.id)
             Pop.toast('Deleted!', 'success')
           }
+        } catch (error) {
+          Pop.toast(error, 'error')
+        }
+      },
+      async getProfileById() {
+        try {
+          await profilesService.getProfileById(props.post.creatorId)
+          router.push({ path: `/profile/${props.post.creatorId}` })
         } catch (error) {
           Pop.toast(error, 'error')
         }

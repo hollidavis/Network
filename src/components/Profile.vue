@@ -1,12 +1,18 @@
 <template>
-  <div class="profile">
-    Profile Component
+  <div>
+    Profile
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Profile',
+  name: 'ProfileCard',
+  props: {
+    activeProfile: {
+      type: Object,
+      required: true
+    }
+  },
   setup() {
     return {}
   }

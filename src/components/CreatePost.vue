@@ -43,12 +43,6 @@ import { postsService } from '../services/PostsService'
 import Pop from '../utils/Notifier'
 export default {
   name: 'CreatePost',
-  props: {
-    posts: {
-      type: Object,
-      required: true
-    }
-  },
   setup() {
     const state = reactive({
       newPost: {}

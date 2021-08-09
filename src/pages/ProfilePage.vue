@@ -1,10 +1,9 @@
 <template>
-  <div class="about row">
+  <div class="row">
     <div class="col-12 bg-light rounded shadow">
-      <Profile :profile="profile" />
     </div>
     <div class="col-12 bg-light rounded shadow">
-      <CreatePost :posts="posts" />
+      <CreatePost v-if="activeProfile.id === account.id" />
     </div>
     <div class="col-12">
       <Thread :posts="posts" />
@@ -13,27 +12,26 @@
 </template>
 
 <script>
-import { computed, onMounted, reactive } from 'vue'
+import { computed, onMounted } from 'vue'
 import { AppState } from '../AppState'
 import { postsService } from '../services/PostsService'
 import Pop from '../utils/Notifier'
+import { useRoute } from 'vue-router'
 export default {
-  name: 'Account',
+  name: 'Profile',
   setup() {
-    const state = reactive({
-      activeProfile: computed(() => AppState.activeProfile)
-    })
+    const router = useRoute()
     onMounted(async() => {
       try {
-        await postsService.getAllPosts({ creatorId: state.activeProfile.id })
+        await postsService.getAllPosts({ creatorId: router.params.id })
       } catch (error) {
         Pop.toast(error, 'error')
       }
     })
     return {
-      profile: computed(() => AppState.profiles),
-      posts: computed(() => AppState.posts)
-
+      posts: computed(() => AppState.posts),
+      account: computed(() => AppState.account),
+      activeProfile: computed(() => AppState.activeProfile)
     }
   }
 }
