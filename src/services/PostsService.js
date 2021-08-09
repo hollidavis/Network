@@ -23,6 +23,11 @@ class PostsService {
     await this.getAllPosts()
   }
 
+  async likePost(id) {
+    await api.post('api/posts/' + id + '/like')
+    await this.getAllPosts()
+  }
+
   async destroyPost(id) {
     await api.delete('api/posts/' + id)
     await this.getAllPosts()

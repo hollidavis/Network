@@ -39,10 +39,9 @@
     <!-- Likes -->
     <div class="row justify-content-end mb-3">
       <div class="col-1 d-flex flex-row justify-content-around align-items-center">
-        <i class="fa fa-heart"></i>
+        <i class="far fa-lg fa-heart cursor" @click.stop="likePost"></i>
         <p class="m-0">
-          0
-          <!-- TODO Add function to count likes & display results here -->
+          {{ state.likes }}
         </p>
       </div>
     </div>
@@ -50,7 +49,7 @@
 </template>
 
 <script>
-import { computed, onMounted, reactive } from '@vue/runtime-core'
+import { computed, onMounted, onUpdated, reactive } from '@vue/runtime-core'
 import { AppState } from '../AppState'
 import { postsService } from '../services/PostsService'
 import Pop from '../utils/Notifier'
@@ -67,11 +66,26 @@ export default {
   setup(props) {
     const state = reactive({
       newPost: {},
-      time: ''
+      time: '',
+      likes: 0
     })
     onMounted(() => {
       const old = new Date(props.post.createdAt)
       state.time = old.toUTCString()
+    })
+    onUpdated(() => {
+      let count = 0
+      props.post.likes.forEach(like => {
+        count++
+      })
+      state.likes = count
+    })
+    onMounted(() => {
+      let count = 0
+      props.post.likes.forEach(like => {
+        count++
+      })
+      state.likes = count
     })
     return {
       state,
@@ -90,6 +104,13 @@ export default {
         try {
           await profilesService.getProfileById(props.post.creatorId)
           router.push({ path: `/profile/${props.post.creatorId}` })
+        } catch (error) {
+          Pop.toast(error, 'error')
+        }
+      },
+      async likePost() {
+        try {
+          await postsService.likePost(props.post.id)
         } catch (error) {
           Pop.toast(error, 'error')
         }
