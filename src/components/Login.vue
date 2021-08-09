@@ -55,8 +55,8 @@ export default {
   width: 70%
 }
 .spill{
-margin-right: 3em;
-margin-top: -5em
+margin-right: 20%;
+margin-top: -25%
 }
 .cursor{
   cursor: pointer;
