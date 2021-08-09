@@ -11,7 +11,7 @@
       </div>
     </div>
     <!-- Profile Info -->
-    <div class="row">
+    <div class="row flex-column">
       <!-- Name & Class -->
       <div class="col mx-3">
         <p class="text-gray m-0">
@@ -61,7 +61,10 @@ export default {
 
 <style lang="scss" scoped>
 .profile-img{
-  width: 70%
+  width: 20vw;
+  height: 20vw;
+  object-fit: cover;
+  object-position: center;
 }
 .spill{
 margin-right: 20%;

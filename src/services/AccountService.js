@@ -13,9 +13,9 @@ class AccountService {
     }
   }
 
-  async editAccount() {
+  async editAccount(newAccount) {
     try {
-      await api.put('/account')
+      await api.put('/account', newAccount)
       await this.getAccount()
     } catch (error) {
       Pop.toast(error, 'error')
