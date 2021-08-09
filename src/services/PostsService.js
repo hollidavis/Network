@@ -1,9 +1,20 @@
 import { AppState } from '../AppState'
 import { convertToQuery } from '../utils/Query'
-import { api } from './AxiosService'
+import { api, blank } from './AxiosService'
+
 class PostsService {
   async getAllPosts(query = {}) {
     const res = await api.get('api/posts' + convertToQuery(query))
+    AppState.posts = res.data
+  }
+
+  async getOlder(older) {
+    const res = await blank.get(older)
+    AppState.posts = res.data
+  }
+
+  async getNewer(newer) {
+    const res = await blank.get(newer)
     AppState.posts = res.data
   }
 
