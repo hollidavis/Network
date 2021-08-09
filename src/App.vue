@@ -26,8 +26,6 @@
 <script>
 import { computed } from 'vue'
 import { AppState } from './AppState'
-import Pop from './utils/Notifier'
-import { profilesService } from './services/ProfilesService'
 export default {
   name: 'App',
   setup() {
