@@ -32,7 +32,6 @@ export default {
 }
 </script>
 
-    CreatePost
 <style scoped lang="scss">
 .pl-15{
   padding-left: 15px;

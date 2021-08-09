@@ -8,6 +8,12 @@ class PostsService {
     AppState.posts = res.data
   }
 
+  async searchPosts() {
+    const keyword = AppState.keyword
+    const res = await api.get('api/posts/?search=' + keyword)
+    AppState.searchPosts = res.data
+  }
+
   async getOlder(older) {
     const res = await blank.get(older)
     AppState.posts = res.data

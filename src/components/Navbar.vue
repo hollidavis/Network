@@ -24,11 +24,12 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <router-link :to="{ name: 'Search' }" class="nav-link">
-            <span class="fa fa-search"></span> Search
-          </router-link>
-        </li>
+        <form class="form-inline my-2 my-lg-0" @submit.prevent="searchPosts">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" v-model="state.keyword">
+          <button class="btn btn-outline-secondary my-2 my-sm-0 " type="submit">
+            <span class="fa fa-search mr-1"></span> Search
+          </button>
+        </form>
       </ul>
       <span class="navbar-text">
         <button
@@ -74,14 +75,28 @@
 import { AuthService } from '../services/AuthService'
 import { AppState } from '../AppState'
 import { computed, reactive } from 'vue'
+import { postsService } from '../services/PostsService'
+import Pop from '../utils/Notifier'
+import { router } from '../router'
 export default {
   setup() {
     const state = reactive({
-      dropOpen: false
+      dropOpen: false,
+      keyword: ''
     })
     return {
       state,
       user: computed(() => AppState.user),
+      keyword: computed(() => AppState.keyword),
+      async searchPosts() {
+        try {
+          AppState.keyword = state.keyword
+          await postsService.searchPosts({ search: state.keyword })
+          router.push('search')
+        } catch (error) {
+          Pop.toast(error, 'error')
+        }
+      },
       async login() {
         AuthService.loginWithPopup()
       },
