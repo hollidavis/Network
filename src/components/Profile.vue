@@ -6,7 +6,6 @@
 
 <script>
 export default {
-  name: 'ProfileCard',
   props: {
     activeProfile: {
       type: Object,
