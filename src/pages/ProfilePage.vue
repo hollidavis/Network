@@ -1,6 +1,7 @@
 <template>
   <div class="row">
-    <div class="col-12 bg-light rounded shadow">
+    <div class="col-12 bg-light rounded shadow my-3">
+      <ProfileCard />
     </div>
     <div class="col-12 bg-light rounded shadow">
       <CreatePost v-if="activeProfile.id === account.id" />

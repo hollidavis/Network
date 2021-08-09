@@ -20,7 +20,7 @@
         </p>
         <div class="d-flex align-items-center">
           <p class="m-0">
-            {{ post.createdAt }}
+            {{ state.time }}
           </p>
           <span class="ml-2 fa fa-user-graduate" aria-hidden="true" v-if="post.creator.graduated == true"></span>
           <span class="ml-2 fa fa-user" aria-hidden="true" v-else></span>
@@ -50,7 +50,7 @@
 </template>
 
 <script>
-import { computed } from '@vue/runtime-core'
+import { computed, onMounted, reactive } from '@vue/runtime-core'
 import { AppState } from '../AppState'
 import { postsService } from '../services/PostsService'
 import Pop from '../utils/Notifier'
@@ -65,7 +65,16 @@ export default {
     }
   },
   setup(props) {
+    const state = reactive({
+      newPost: {},
+      time: ''
+    })
+    onMounted(() => {
+      const old = new Date(props.post.createdAt)
+      state.time = old.toUTCString()
+    })
     return {
+      state,
       account: computed(() => AppState.account),
       async deletePost() {
         try {
