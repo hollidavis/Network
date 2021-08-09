@@ -10,7 +10,7 @@
     <!-- Creator Info -->
     <div class="row">
       <!-- Profile Picture -->
-      <div class="ml-3" @click.stop="getProfileById">
+      <div class="ml-3 cursor" @click.stop="getProfileById">
         <img class="round-border sm-profile" :src="post.creator.picture" :alt="post.creator.name">
       </div>
       <!-- Name, Created At, Graduated -->

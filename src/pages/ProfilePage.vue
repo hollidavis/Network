@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import { computed, onMounted } from 'vue'
+import { computed, onMounted, onUpdated } from 'vue'
 import { AppState } from '../AppState'
 import { postsService } from '../services/PostsService'
 import Pop from '../utils/Notifier'
@@ -22,6 +22,13 @@ export default {
   setup() {
     const router = useRoute()
     onMounted(async() => {
+      try {
+        await postsService.getAllPosts({ creatorId: router.params.id })
+      } catch (error) {
+        Pop.toast(error, 'error')
+      }
+    })
+    onUpdated(async() => {
       try {
         await postsService.getAllPosts({ creatorId: router.params.id })
       } catch (error) {

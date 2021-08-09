@@ -67,7 +67,4 @@ export default {
 margin-right: 20%;
 margin-top: -25%
 }
-.cursor{
-  cursor: pointer;
-}
 </style>
