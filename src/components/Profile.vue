@@ -1,6 +1,6 @@
 <template>
   <div class="profile">
-    test
+    Profile Component
   </div>
 </template>
 

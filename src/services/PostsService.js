@@ -1,4 +1,5 @@
 import { AppState } from '../AppState'
+import { logger } from '../utils/Logger'
 import { convertToQuery } from '../utils/Query'
 import { api } from './AxiosService'
 class PostsService {
@@ -14,7 +15,7 @@ class PostsService {
 
   async destroyPost(id) {
     await api.delete('api/posts/' + id)
-    AppState.posts = AppState.post.filter(p => p.id !== id)
+    await this.getAllPosts()
   }
 }
 
